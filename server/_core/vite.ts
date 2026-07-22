@@ -7,20 +7,24 @@ import { createServer as createViteServer } from "vite";
 import viteConfig from "../../vite.config";
 
 export async function setupVite(app: Express, server: Server) {
+console.log("A. Entrando en setupVite");
   const serverOptions = {
     middlewareMode: true,
     hmr: { server },
     allowedHosts: true as const,
   };
 
+console.log("B. Antes de createViteServer");
   const vite = await createViteServer({
     ...viteConfig,
     configFile: false,
     server: serverOptions,
     appType: "custom",
   });
+console.log("C. Después de createViteServer");
 
   app.use(vite.middlewares);
+console.log("D. middleware registrado");
   app.use("*", async (req, res, next) => {
     const url = req.originalUrl;
 
