@@ -154,6 +154,7 @@ const plugins = [react(), tailwindcss(),
 ];
 
 export default defineConfig({
+  base: "/acadabs/",
   plugins,
   resolve: {
     alias: {
