@@ -36,12 +36,9 @@ const SERVICES = [
 const COLLABORATORS = [
   { name: 'ILERNA', category: 'Formación' },
   { name: 'Multiversitas SLU', category: 'Educación' },
-  { name: 'UNED', category: 'Universidad' },
-  { name: 'Institut Roger de Llúria', category: 'Formación' },
-  { name: 'Fisioquir', category: 'Terapias' },
+   { name: 'Institut Roger de Llúria', category: 'Formación' },
   { name: 'Generalitat de Catalunya', category: 'Administración' },
-  { name: 'Fundació Futur', category: 'Restauración Colectiva' }
-  { name: 'IOE', category: 'Redacción de Textos y Temarios Académicos'}
+   { name: 'IOE', category: 'Redacción de Textos y Temarios Académicos'}
 ];
 
 export default function Home() {
