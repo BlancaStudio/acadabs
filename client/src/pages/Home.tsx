@@ -4,7 +4,7 @@ import { Dialog, DialogContent, DialogHeader, DialogTitle } from '@/components/u
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
 import { Label } from '@/components/ui/label';
-import { Mail, Phone, ArrowRight, Menu, X } from 'lucide-react';
+import { Mail, Phone, ArrowRight, Menu, X, Sparkles } from 'lucide-react';
 import { trpc } from '@/lib/trpc';
 import { toast } from 'sonner';
 
@@ -12,33 +12,20 @@ const HERO_IMAGE = 'https://d2xsxph8kpxj0f.cloudfront.net/310519663187089691/KCh
 
 const SERVICES = [
   {
-    title: 'Consultoría Académica',
-    description: 'Diseño, Investigación+Desarrollo+innovación.'
+    number: '01',
+    title: 'Consultoría y Gestión Académica',
+    description: 'Investigación, desarrollo (I+D+i) y acompañamiento en proyectos académicos.'
   },
   {
-    title: 'Formación y Docencia',
-    description: 'Programas educativos especializados en nutrición, salud y bienestar.'
+    number: '02',
+    title: 'Formación Especializada',
+    description: 'Programas educativos y capacitación profesional para farmacias y entidades de salud.'
   },
   {
-    title: 'Redacción y Gestión de Proyectos Académicos',
-    description: 'Apoyo integral en investigación, redacción y gestión de proyectos académicos.'
-  },
-  {
-    title: 'Formación en Farmacias',
-    description: 'Acompañamiento profesional para transformar hábitos alimentarios y mejorar la calidad de vida.'
-  },
-  {
-    title: 'Gestión de Contenidos y Marketing Digital',
-    description: 'Estrategia y creación de contenidos especializados en salud y nutrición.'
+    number: '03',
+    title: 'Comunicación y Marketing Científico',
+    description: 'Estrategia y creación de contenidos rigurosos en nutrición y bienestar.'
   }
-];
-
-const COLLABORATORS = [
-  { name: 'ILERNA', category: 'Formación' },
-  { name: 'Multiversitas SLU', category: 'Educación' },
-   { name: 'Institut Roger de Llúria', category: 'Formación' },
-  { name: 'Generalitat de Catalunya', category: 'Administración' },
-   { name: 'IOE', category: 'Redacción de Textos y Temarios Académicos'}
 ];
 
 export default function Home() {
@@ -75,48 +62,45 @@ export default function Home() {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-slate-950 via-blue-950 to-slate-950">
+    <div className="min-h-screen bg-[#070e0c] text-emerald-50">
       {/* Navigation */}
-      <nav className="fixed top-0 w-full bg-slate-950/80 backdrop-blur-md z-50 border-b border-amber-500/20">
+      <nav className="fixed top-0 w-full bg-[#070e0c]/90 backdrop-blur-md z-50 border-b border-emerald-500/20">
         <div className="max-w-6xl mx-auto px-4 py-4 flex items-center justify-between">
-          <div className="text-2xl font-bold text-amber-400">AcademicaBS</div>
+          <div className="text-2xl font-bold tracking-tight text-amber-400 flex items-center gap-2">
+            AcademicaBS <Sparkles className="w-4 h-4 text-pink-500" />
+          </div>
           
           {/* Desktop Navigation */}
           <div className="hidden md:flex gap-8">
-            <button onClick={() => scrollToSection('services')} className="text-gray-300 hover:text-amber-400 transition">Servicios</button>
-            <button onClick={() => scrollToSection('collaborators')} className="text-gray-300 hover:text-amber-400 transition">Colaboradores</button>
-            <button onClick={() => scrollToSection('contact')} className="text-gray-300 hover:text-amber-400 transition">Contacto</button>
+            <button onClick={() => scrollToSection('services')} className="text-emerald-100/80 hover:text-amber-400 transition font-medium">Servicios</button>
+            <button onClick={() => scrollToSection('contact')} className="text-emerald-100/80 hover:text-amber-400 transition font-medium">Contacto</button>
           </div>
           
           {/* Mobile Menu Button */}
           <button 
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-            className="md:hidden text-amber-400 hover:text-amber-300 transition"
+            className="md:hidden text-emerald-400 hover:text-pink-400 transition"
           >
             {isMobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
           </button>
           
-          <Button onClick={() => setIsContactOpen(true)} className="hidden md:inline-flex bg-amber-500 hover:bg-amber-600 text-slate-950 font-semibold">Contactar</Button>
+          <Button onClick={() => setIsContactOpen(true)} className="hidden md:inline-flex bg-gradient-to-r from-amber-400 to-amber-500 hover:from-pink-500 hover:to-pink-600 text-zinc-950 hover:text-white font-semibold transition-all">
+            Contactar
+          </Button>
         </div>
         
         {/* Mobile Navigation Menu */}
         {isMobileMenuOpen && (
-          <div className="md:hidden bg-slate-900/95 border-t border-amber-500/20 px-4 py-4 space-y-3">
+          <div className="md:hidden bg-[#091512] border-t border-emerald-500/20 px-4 py-4 space-y-3">
             <button 
               onClick={() => scrollToSection('services')}
-              className="block w-full text-left text-gray-300 hover:text-amber-400 transition py-2"
+              className="block w-full text-left text-emerald-100/80 hover:text-amber-400 transition py-2"
             >
               Servicios
             </button>
             <button 
-              onClick={() => scrollToSection('collaborators')}
-              className="block w-full text-left text-gray-300 hover:text-amber-400 transition py-2"
-            >
-              Colaboradores
-            </button>
-            <button 
               onClick={() => scrollToSection('contact')}
-              className="block w-full text-left text-gray-300 hover:text-amber-400 transition py-2"
+              className="block w-full text-left text-emerald-100/80 hover:text-amber-400 transition py-2"
             >
               Contacto
             </button>
@@ -125,7 +109,7 @@ export default function Home() {
                 setIsContactOpen(true);
                 setIsMobileMenuOpen(false);
               }}
-              className="w-full bg-amber-500 hover:bg-amber-600 text-slate-950 font-semibold"
+              className="w-full bg-amber-400 hover:bg-pink-500 text-zinc-950 hover:text-white font-semibold transition-all"
             >
               Contactar
             </Button>
@@ -134,61 +118,47 @@ export default function Home() {
       </nav>
 
       {/* Hero Section */}
-      <section className="pt-24 pb-16 px-4">
+      <section className="pt-32 pb-20 px-4">
         <div className="max-w-6xl mx-auto grid md:grid-cols-2 gap-12 items-center">
           <div className="space-y-6">
-            <h1 className="text-5xl md:text-6xl font-bold text-white leading-tight">
-              <span className="text-amber-400">AcademicaBS</span>
+            <h1 className="text-5xl md:text-6xl font-extrabold leading-tight tracking-tight">
+              <span className="bg-gradient-to-r from-amber-300 via-amber-400 to-emerald-400 bg-clip-text text-transparent">AcademicaBS</span>
             </h1>
-            <p className="text-xl text-gray-300">
+            <p className="text-xl text-emerald-200/90 font-light leading-relaxed">
               Consultoría, formación y redacción académica que combina tecnología con el toque humano.
             </p>
-            <p className="text-gray-400 leading-relaxed">
-              Somos especialistas en salud, educación y gestión de proyectos académicos. Transformamos conocimiento en resultados tangibles para individuos, empresas e instituciones.
+            <p className="text-emerald-100/70 leading-relaxed">
+              Especialistas en nutrición, salud y gestión de proyectos académicos. Transformamos conocimiento en resultados tangibles.
             </p>
-            <Button 
-              onClick={() => setIsContactOpen(true)}
-              className="bg-amber-500 hover:bg-amber-600 text-slate-950 font-bold py-6 px-8 text-lg flex items-center gap-2"
-            >
-              Solicita una Consulta <ArrowRight className="w-5 h-5" />
-            </Button>
+            <div className="pt-2">
+              <Button 
+                onClick={() => setIsContactOpen(true)}
+                className="bg-emerald-500 hover:bg-pink-500 text-zinc-950 hover:text-white font-bold py-6 px-8 text-lg flex items-center gap-2 rounded-xl transition-all shadow-lg shadow-emerald-950/50"
+              >
+                Solicita una Consulta <ArrowRight className="w-5 h-5 text-amber-300" />
+              </Button>
+            </div>
           </div>
           <div className="relative">
-            <div className="absolute inset-0 bg-gradient-to-r from-amber-500/20 to-blue-500/20 rounded-lg blur-2xl"></div>
-            <img src={HERO_IMAGE} alt="Tecnología y Humanidad" className="relative rounded-lg shadow-2xl w-full" />
+            <div className="absolute inset-0 bg-gradient-to-tr from-emerald-500/20 via-pink-500/20 to-amber-500/20 rounded-2xl blur-2xl"></div>
+            <img src={HERO_IMAGE} alt="Tecnología y Humanidad" className="relative rounded-2xl border border-emerald-500/30 shadow-2xl w-full object-cover" />
           </div>
         </div>
       </section>
 
       {/* Services Section */}
-      <section id="services" className="py-20 px-4 bg-slate-900/50">
+      <section id="services" className="py-24 px-4 bg-[#091512]/60 border-y border-emerald-500/10">
         <div className="max-w-6xl mx-auto">
-          <h2 className="text-4xl font-bold text-white mb-4">Nuestros Servicios</h2>
-          <div className="w-16 h-1 bg-gradient-to-r from-amber-500 to-amber-400 mb-12"></div>
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {SERVICES.map((service, idx) => (
-              <div key={idx} className="bg-gradient-to-br from-blue-900/40 to-slate-900/40 border border-amber-500/30 rounded-lg p-6 hover:border-amber-500/60 transition group">
-                <div className="w-12 h-12 bg-amber-500/20 rounded-lg flex items-center justify-center mb-4 group-hover:bg-amber-500/40 transition">
-                  <span className="text-amber-400 font-bold text-lg">{idx + 1}</span>
-                </div>
-                <h3 className="text-xl font-semibold text-white mb-3">{service.title}</h3>
-                <p className="text-gray-400">{service.description}</p>
-              </div>
-            ))}
+          <div className="flex flex-col items-start mb-16">
+            <h2 className="text-3xl md:text-4xl font-bold text-white tracking-tight">Nuestros Servicios</h2>
+            <div className="w-20 h-1 bg-gradient-to-r from-emerald-400 via-amber-400 to-pink-500 rounded-full mt-3"></div>
           </div>
-        </div>
-      </section>
-
-      {/* Collaborators Section */}
-      <section id="collaborators" className="py-20 px-4">
-        <div className="max-w-6xl mx-auto">
-          <h2 className="text-4xl font-bold text-white mb-4">Empresas Colaboradoras</h2>
-          <div className="w-16 h-1 bg-gradient-to-r from-amber-500 to-amber-400 mb-12"></div>
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-            {COLLABORATORS.map((collab, idx) => (
-              <div key={idx} className="bg-gradient-to-br from-blue-900/30 to-slate-900/30 border border-amber-500/20 rounded-lg p-6 text-center hover:border-amber-500/50 transition">
-                <h3 className="text-lg font-semibold text-white mb-2">{collab.name}</h3>
-                <p className="text-amber-400 text-sm">{collab.category}</p>
+          <div className="grid md:grid-cols-3 gap-8">
+            {SERVICES.map((service, idx) => (
+              <div key={idx} className="relative group p-8 rounded-2xl bg-[#0b1b17] border border-emerald-500/20 hover:border-pink-500/50 transition-all duration-300">
+                <span className="text-3xl font-black text-amber-400/80 mb-4 block">{service.number}</span>
+                <h3 className="text-xl font-bold text-white mb-3 group-hover:text-emerald-300 transition-colors">{service.title}</h3>
+                <p className="text-emerald-100/70 leading-relaxed text-sm">{service.description}</p>
               </div>
             ))}
           </div>
@@ -196,31 +166,40 @@ export default function Home() {
       </section>
 
       {/* Contact Section */}
-      <section id="contact" className="py-20 px-4 bg-slate-900/50">
+      <section id="contact" className="py-24 px-4">
         <div className="max-w-6xl mx-auto">
-          <h2 className="text-4xl font-bold text-white mb-4">Ponte en Contacto</h2>
-          <div className="w-16 h-1 bg-gradient-to-r from-amber-500 to-amber-400 mb-12"></div>
-          <div className="grid md:grid-cols-2 gap-12">
-            <div className="space-y-8">
+          <div className="flex flex-col items-start mb-16">
+            <h2 className="text-3xl md:text-4xl font-bold text-white tracking-tight">Ponte en Contacto</h2>
+            <div className="w-20 h-1 bg-gradient-to-r from-emerald-400 via-amber-400 to-pink-500 rounded-full mt-3"></div>
+          </div>
+          
+          <div className="grid md:grid-cols-2 gap-12 items-center">
+            <div className="space-y-8 bg-[#0b1b17] p-8 rounded-2xl border border-emerald-500/20">
               <div className="flex items-start gap-4">
-                <Phone className="w-6 h-6 text-amber-400 mt-1" />
+                <div className="p-3 bg-emerald-500/10 rounded-xl border border-emerald-500/20 text-pink-400">
+                  <Phone className="w-6 h-6" />
+                </div>
                 <div>
-                  <h3 className="text-lg font-semibold text-white mb-1">Teléfono</h3>
-                  <a href="tel:+34643831241" className="text-gray-300 hover:text-amber-400 transition">+34 643 831 241</a>
+                  <h3 className="text-lg font-semibold text-amber-400 mb-1">Teléfono</h3>
+                  <a href="tel:+34643831241" className="text-emerald-100/80 hover:text-emerald-300 transition">+34 643 831 241</a>
                 </div>
               </div>
+              
               <div className="flex items-start gap-4">
-                <Mail className="w-6 h-6 text-amber-400 mt-1" />
+                <div className="p-3 bg-emerald-500/10 rounded-xl border border-emerald-500/20 text-pink-400">
+                  <Mail className="w-6 h-6" />
+                </div>
                 <div>
-                  <h3 className="text-lg font-semibold text-white mb-1">Email</h3>
-                  <a href="mailto:allabsone@outlook.es" className="text-gray-300 hover:text-amber-400 transition">allabsone@outlook.es</a>
+                  <h3 className="text-lg font-semibold text-amber-400 mb-1">Email</h3>
+                  <a href="mailto:tu-nuevo-email@dominio.com" className="text-emerald-100/80 hover:text-emerald-300 transition">tu-nuevo-email@dominio.com</a>
                 </div>
               </div>
             </div>
-            <div>
+
+            <div className="flex justify-center md:justify-end">
               <Button 
                 onClick={() => setIsContactOpen(true)}
-                className="w-full bg-amber-500 hover:bg-amber-600 text-slate-950 font-bold py-6 text-lg"
+                className="w-full md:w-auto bg-gradient-to-r from-emerald-500 via-emerald-600 to-pink-500 hover:from-pink-500 hover:to-amber-500 text-white font-bold py-8 px-12 text-xl rounded-2xl shadow-xl transition-all duration-300"
               >
                 Enviar Mensaje
               </Button>
@@ -231,52 +210,52 @@ export default function Home() {
 
       {/* Contact Form Modal */}
       <Dialog open={isContactOpen} onOpenChange={setIsContactOpen}>
-        <DialogContent className="bg-slate-900 border-amber-500/30">
+        <DialogContent className="bg-[#0b1b17] border-emerald-500/30 text-emerald-50">
           <DialogHeader>
-            <DialogTitle className="text-white">Formulario de Contacto</DialogTitle>
+            <DialogTitle className="text-amber-400 text-xl font-bold">Formulario de Contacto</DialogTitle>
           </DialogHeader>
-          <form onSubmit={handleSubmit} className="space-y-4">
+          <form onSubmit={handleSubmit} className="space-y-4 pt-2">
             <div>
-              <Label className="text-gray-300">Nombre</Label>
+              <Label className="text-emerald-200">Nombre</Label>
               <Input 
                 value={formData.name}
                 onChange={(e) => setFormData({...formData, name: e.target.value})}
                 placeholder="Tu nombre"
-                className="bg-slate-800 border-slate-700 text-white placeholder:text-gray-500"
+                className="bg-[#070e0c] border-emerald-500/30 text-white placeholder:text-emerald-700 focus:border-amber-400"
               />
             </div>
             <div>
-              <Label className="text-gray-300">Email</Label>
+              <Label className="text-emerald-200">Email</Label>
               <Input 
                 type="email"
                 value={formData.email}
                 onChange={(e) => setFormData({...formData, email: e.target.value})}
                 placeholder="tu@email.com"
-                className="bg-slate-800 border-slate-700 text-white placeholder:text-gray-500"
+                className="bg-[#070e0c] border-emerald-500/30 text-white placeholder:text-emerald-700 focus:border-amber-400"
               />
             </div>
             <div>
-              <Label className="text-gray-300">Asunto</Label>
+              <Label className="text-emerald-200">Asunto</Label>
               <Input 
                 value={formData.subject}
                 onChange={(e) => setFormData({...formData, subject: e.target.value})}
                 placeholder="Asunto del mensaje"
-                className="bg-slate-800 border-slate-700 text-white placeholder:text-gray-500"
+                className="bg-[#070e0c] border-emerald-500/30 text-white placeholder:text-emerald-700 focus:border-amber-400"
               />
             </div>
             <div>
-              <Label className="text-gray-300">Mensaje</Label>
+              <Label className="text-emerald-200">Mensaje</Label>
               <Textarea 
                 value={formData.message}
                 onChange={(e) => setFormData({...formData, message: e.target.value})}
                 placeholder="Tu mensaje..."
-                className="bg-slate-800 border-slate-700 text-white placeholder:text-gray-500 min-h-32"
+                className="bg-[#070e0c] border-emerald-500/30 text-white placeholder:text-emerald-700 focus:border-amber-400 min-h-32"
               />
             </div>
             <Button 
               type="submit" 
               disabled={isSubmitting}
-              className="w-full bg-amber-500 hover:bg-amber-600 text-slate-950 font-bold"
+              className="w-full bg-amber-400 hover:bg-pink-500 text-zinc-950 hover:text-white font-bold py-3 transition-colors"
             >
               {isSubmitting ? 'Enviando...' : 'Enviar Mensaje'}
             </Button>
@@ -285,8 +264,8 @@ export default function Home() {
       </Dialog>
 
       {/* Footer */}
-      <footer className="bg-slate-950 border-t border-amber-500/20 py-8 px-4">
-        <div className="max-w-6xl mx-auto text-center text-gray-400">
+      <footer className="bg-[#050b09] border-t border-emerald-500/20 py-8 px-4">
+        <div className="max-w-6xl mx-auto text-center text-emerald-100/50 text-sm">
           <p>&copy; 2026 AcademicaBS. Todos los derechos reservados.</p>
         </div>
       </footer>
