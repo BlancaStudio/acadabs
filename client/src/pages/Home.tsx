@@ -12,8 +12,8 @@ const HERO_IMAGE = 'https://d2xsxph8kpxj0f.cloudfront.net/310519663187089691/KCh
 
 const SERVICES = [
   {
-    title: 'Consultoría Nutricional',
-    description: 'Asesoramiento personalizado en nutrición y salud alimentaria para individuos y organizaciones.'
+    title: 'Consultoría Académica',
+    description: 'Diseño, Investigación+Desarrollo+innovación.'
   },
   {
     title: 'Formación y Docencia',
@@ -24,7 +24,7 @@ const SERVICES = [
     description: 'Apoyo integral en investigación, redacción y gestión de proyectos académicos.'
   },
   {
-    title: 'Coaching Nutricional',
+    title: 'Formación en Farmacias',
     description: 'Acompañamiento profesional para transformar hábitos alimentarios y mejorar la calidad de vida.'
   },
   {
@@ -36,12 +36,12 @@ const SERVICES = [
 const COLLABORATORS = [
   { name: 'ILERNA', category: 'Formación' },
   { name: 'Multiversitas SLU', category: 'Educación' },
-  { name: 'Naturhouse', category: 'Nutrición' },
   { name: 'UNED', category: 'Universidad' },
   { name: 'Institut Roger de Llúria', category: 'Formación' },
   { name: 'Fisioquir', category: 'Terapias' },
   { name: 'Generalitat de Catalunya', category: 'Administración' },
-  { name: 'Fundació Futur', category: 'Catering' }
+  { name: 'Fundació Futur', category: 'Restauración Colectiva' }
+  { name: 'IOE', category: 'Redacción de Textos y Temarios Académicos'}
 ];
 
 export default function Home() {
@@ -147,7 +147,7 @@ export default function Home() {
               Consultoría, formación y redacción académica que combina tecnología con el toque humano.
             </p>
             <p className="text-gray-400 leading-relaxed">
-              Somos especialistas en nutrición, educación y gestión de proyectos académicos. Transformamos conocimiento en resultados tangibles para individuos, empresas e instituciones.
+              Somos especialistas en salud, educación y gestión de proyectos académicos. Transformamos conocimiento en resultados tangibles para individuos, empresas e instituciones.
             </p>
             <Button 
               onClick={() => setIsContactOpen(true)}
