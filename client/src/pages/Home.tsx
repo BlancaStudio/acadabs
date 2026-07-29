@@ -17,12 +17,12 @@ const SERVICES = [
   {
     number: '02',
     title: 'Formación Especializada',
-    description: 'Programas educativos y capacitación profesional para farmacias y entidades de salud.'
+    description: 'Programas educativos y capacitación profesional para entidades de salud y gestión.'
   },
   {
     number: '03',
     title: 'Comunicación y Marketing Científico',
-    description: 'Estrategia y creación de contenidos rigurosos en nutrición y bienestar.'
+    description: 'Estrategia y creación de contenidos rigurosos para la difusión del conocimiento.'
   }
 ];
 
@@ -60,45 +60,45 @@ export default function Home() {
   };
 
   return (
-    <div className="min-h-screen bg-slate-50 text-slate-800">
+    <div className="min-h-screen bg-[#F8A89A] text-slate-900">
       {/* Navigation */}
-      <nav className="fixed top-0 w-full bg-white/80 backdrop-blur-md z-50 border-b border-emerald-100 shadow-sm">
+      <nav className="fixed top-0 w-full bg-[#F8A89A]/90 backdrop-blur-md z-50 border-b border-[#0091C2]/30 shadow-sm">
         <div className="max-w-6xl mx-auto px-4 py-4 flex items-center justify-between">
-          <div className="text-2xl font-black tracking-tight bg-gradient-to-r from-emerald-500 via-purple-600 to-indigo-600 bg-clip-text text-transparent flex items-center gap-2">
-            AcademicaBS <Sparkles className="w-5 h-5 text-emerald-400 fill-emerald-400" />
+          <div className="text-2xl font-black tracking-tight text-[#E839A2] flex items-center gap-2 drop-shadow-sm">
+            AcademicaBS <Sparkles className="w-5 h-5 text-[#FFDC2E] fill-[#FFDC2E]" />
           </div>
           
           {/* Desktop Navigation */}
           <div className="hidden md:flex gap-8">
-            <button onClick={() => scrollToSection('services')} className="text-slate-600 hover:text-purple-600 font-medium transition">Servicios</button>
-            <button onClick={() => scrollToSection('contact')} className="text-slate-600 hover:text-purple-600 font-medium transition">Contacto</button>
+            <button onClick={() => scrollToSection('services')} className="text-slate-900 hover:text-[#E839A2] font-extrabold transition">Servicios</button>
+            <button onClick={() => scrollToSection('contact')} className="text-slate-900 hover:text-[#E839A2] font-extrabold transition">Contacto</button>
           </div>
           
           {/* Mobile Menu Button */}
           <button 
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-            className="md:hidden text-purple-600 hover:text-emerald-500 transition"
+            className="md:hidden text-slate-900 hover:text-[#E839A2] transition"
           >
             {isMobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
           </button>
           
-          <Button onClick={() => setIsContactOpen(true)} className="hidden md:inline-flex bg-purple-600 hover:bg-emerald-500 text-white font-bold rounded-xl transition-all shadow-md shadow-purple-200">
+          <Button onClick={() => setIsContactOpen(true)} className="hidden md:inline-flex bg-[#0091C2] hover:bg-[#007A9E] text-white font-extrabold rounded-xl transition-all shadow-md">
             Contactar
           </Button>
         </div>
         
         {/* Mobile Navigation Menu */}
         {isMobileMenuOpen && (
-          <div className="md:hidden bg-white border-t border-slate-100 px-4 py-4 space-y-3 shadow-lg">
+          <div className="md:hidden bg-[#F8A89A] border-t border-[#0091C2]/20 px-4 py-4 space-y-3 shadow-lg">
             <button 
               onClick={() => scrollToSection('services')}
-              className="block w-full text-left text-slate-600 hover:text-purple-600 font-medium py-2"
+              className="block w-full text-left text-slate-900 font-extrabold py-2"
             >
               Servicios
             </button>
             <button 
               onClick={() => scrollToSection('contact')}
-              className="block w-full text-left text-slate-600 hover:text-purple-600 font-medium py-2"
+              className="block w-full text-left text-slate-900 font-extrabold py-2"
             >
               Contacto
             </button>
@@ -107,7 +107,7 @@ export default function Home() {
                 setIsContactOpen(true);
                 setIsMobileMenuOpen(false);
               }}
-              className="w-full bg-purple-600 hover:bg-emerald-500 text-white font-bold transition-all"
+              className="w-full bg-[#0091C2] hover:bg-[#007A9E] text-white font-extrabold transition-all"
             >
               Contactar
             </Button>
@@ -116,48 +116,48 @@ export default function Home() {
       </nav>
 
       {/* Hero Section */}
-      <section className="pt-36 pb-20 px-4 bg-gradient-to-b from-emerald-50/50 via-purple-50/30 to-slate-50 relative overflow-hidden">
-        {/* Glow Effects */}
-        <div className="absolute top-20 left-1/2 -translate-x-1/2 w-96 h-96 bg-gradient-to-tr from-emerald-300/30 to-purple-400/30 rounded-full blur-3xl -z-10 pointer-events-none"></div>
+      <section className="pt-36 pb-20 px-4 relative overflow-hidden">
+        {/* Glow Accent inspired by the Yellow Sun */}
+        <div className="absolute top-10 left-1/2 -translate-x-1/2 w-80 h-80 bg-[#FFDC2E]/40 rounded-full blur-3xl -z-10 pointer-events-none"></div>
 
         <div className="max-w-4xl mx-auto text-center space-y-8">
-          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white border border-emerald-200 shadow-sm text-emerald-600 text-sm font-semibold">
-            <Sparkles className="w-4 h-4 text-emerald-500" /> Formación & Consultoría Académica
+          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/80 border border-[#FFDC2E] shadow-sm text-slate-900 text-sm font-bold">
+            <Sparkles className="w-4 h-4 text-[#E839A2]" /> Formación & Consultoría Académica
           </div>
           
-          <h1 className="text-5xl md:text-7xl font-extrabold text-slate-900 tracking-tight leading-tight">
-            Transformamos conocimiento en <span className="bg-gradient-to-r from-emerald-500 via-teal-500 to-purple-600 bg-clip-text text-transparent">resultados brillantes</span>
+          <h1 className="text-5xl md:text-7xl font-black text-slate-900 tracking-tight leading-tight">
+            Transformamos conocimiento en <span className="text-[#E839A2] drop-shadow-sm">resultados brillantes</span>
           </h1>
           
-          <p className="text-xl md:text-2xl text-slate-600 font-light max-w-2xl mx-auto leading-relaxed">
-            Especialistas en salud, nutrición y gestión de proyectos académicos. Un enfoque limpio, directo y libre de artificios.
+          <p className="text-xl md:text-2xl text-slate-900 font-medium max-w-2xl mx-auto leading-relaxed bg-white/40 backdrop-blur-sm p-4 rounded-2xl border border-white/40">
+            Especialistas en investigación, gestión de proyectos académicos y comunicación científica. Un enfoque limpio, directo y libre de artificios.
           </p>
 
           <div className="pt-4 flex justify-center">
             <Button 
               onClick={() => setIsContactOpen(true)}
-              className="bg-emerald-400 hover:bg-emerald-500 text-slate-900 font-extrabold py-7 px-10 text-xl rounded-2xl transition-all shadow-xl shadow-emerald-200 flex items-center gap-3 border border-emerald-300"
+              className="bg-[#FFDC2E] hover:bg-[#f3cf21] text-slate-900 font-black py-7 px-10 text-xl rounded-2xl transition-all shadow-lg flex items-center gap-3 border-2 border-slate-900"
             >
-              Solicitar Consulta <ArrowRight className="w-6 h-6 text-purple-700" />
+              Solicitar Consulta <ArrowRight className="w-6 h-6 text-[#E839A2]" />
             </Button>
           </div>
         </div>
       </section>
 
       {/* Services Section */}
-      <section id="services" className="py-24 px-4 bg-white border-y border-slate-100">
+      <section id="services" className="py-24 px-4 bg-white/90 border-y border-[#0091C2]/20">
         <div className="max-w-6xl mx-auto">
           <div className="text-center max-w-2xl mx-auto mb-16">
             <h2 className="text-4xl font-extrabold text-slate-900 tracking-tight">Servicios Principales</h2>
-            <div className="w-16 h-1 bg-gradient-to-r from-emerald-400 to-purple-500 rounded-full mx-auto mt-4"></div>
+            <div className="w-20 h-1.5 bg-[#E839A2] rounded-full mx-auto mt-4"></div>
           </div>
 
           <div className="grid md:grid-cols-3 gap-8">
             {SERVICES.map((service, idx) => (
-              <div key={idx} className="p-8 rounded-3xl bg-slate-50 border border-slate-200/80 hover:border-purple-300 hover:bg-gradient-to-b hover:from-white hover:to-emerald-50/30 transition-all duration-300 shadow-sm hover:shadow-md">
-                <span className="text-4xl font-black text-purple-500/80 mb-6 block">{service.number}</span>
+              <div key={idx} className="p-8 rounded-3xl bg-[#F8A89A]/20 border-2 border-[#0091C2]/30 hover:border-[#E839A2] transition-all duration-300 shadow-sm hover:shadow-md">
+                <span className="text-4xl font-black text-[#E839A2] mb-6 block">{service.number}</span>
                 <h3 className="text-2xl font-bold text-slate-900 mb-3">{service.title}</h3>
-                <p className="text-slate-600 leading-relaxed">{service.description}</p>
+                <p className="text-slate-800 leading-relaxed font-medium">{service.description}</p>
               </div>
             ))}
           </div>
@@ -165,32 +165,32 @@ export default function Home() {
       </section>
 
       {/* Contact Section */}
-      <section id="contact" className="py-24 px-4 bg-gradient-to-b from-slate-50 to-emerald-50/30">
+      <section id="contact" className="py-24 px-4">
         <div className="max-w-5xl mx-auto">
           <div className="text-center max-w-2xl mx-auto mb-16">
             <h2 className="text-4xl font-extrabold text-slate-900 tracking-tight">Ponte en Contacto</h2>
-            <div className="w-16 h-1 bg-gradient-to-r from-emerald-400 to-purple-500 rounded-full mx-auto mt-4"></div>
+            <div className="w-20 h-1.5 bg-[#0091C2] rounded-full mx-auto mt-4"></div>
           </div>
 
           <div className="grid md:grid-cols-2 gap-8 items-center">
-            <div className="space-y-6 bg-white p-8 rounded-3xl border border-slate-200/80 shadow-sm">
+            <div className="space-y-6 bg-white p-8 rounded-3xl border-2 border-slate-900 shadow-md">
               <div className="flex items-center gap-4">
-                <div className="p-4 bg-emerald-100/80 rounded-2xl text-emerald-600">
+                <div className="p-4 bg-[#FFDC2E] rounded-2xl text-slate-900 border border-slate-900">
                   <Phone className="w-6 h-6" />
                 </div>
                 <div>
-                  <h3 className="text-sm font-semibold text-slate-400 uppercase tracking-wider">Teléfono</h3>
-                  <a href="tel:+34643831241" className="text-lg font-bold text-slate-800 hover:text-purple-600 transition">+34 643 831 241</a>
+                  <h3 className="text-sm font-bold text-slate-500 uppercase tracking-wider">Teléfono</h3>
+                  <a href="tel:+34643831241" className="text-lg font-black text-slate-900 hover:text-[#E839A2] transition">+34 643 831 241</a>
                 </div>
               </div>
               
               <div className="flex items-center gap-4">
-                <div className="p-4 bg-purple-100/80 rounded-2xl text-purple-600">
+                <div className="p-4 bg-[#0091C2] rounded-2xl text-white border border-slate-900">
                   <Mail className="w-6 h-6" />
                 </div>
                 <div>
-                  <h3 className="text-sm font-semibold text-slate-400 uppercase tracking-wider">Email</h3>
-                  <a href="mailto:blancasample@outlook.es" className="text-lg font-bold text-slate-800 hover:text-purple-600 transition">blancasample@outlook.es</a>
+                  <h3 className="text-sm font-bold text-slate-500 uppercase tracking-wider">Email</h3>
+                  <a href="mailto:blancasample@outlook.es" className="text-lg font-black text-slate-900 hover:text-[#E839A2] transition">blancasample@outlook.es</a>
                 </div>
               </div>
             </div>
@@ -198,7 +198,7 @@ export default function Home() {
             <div className="flex justify-center md:justify-end">
               <Button 
                 onClick={() => setIsContactOpen(true)}
-                className="w-full md:w-auto bg-gradient-to-r from-purple-600 to-indigo-600 hover:from-emerald-400 hover:to-teal-500 text-white hover:text-slate-900 font-extrabold py-8 px-12 text-xl rounded-2xl shadow-lg transition-all duration-300"
+                className="w-full md:w-auto bg-[#E839A2] hover:bg-[#d02c8e] text-white font-extrabold py-8 px-12 text-xl rounded-2xl shadow-lg border-2 border-slate-900 transition-all duration-300"
               >
                 Enviar Mensaje
               </Button>
@@ -209,52 +209,52 @@ export default function Home() {
 
       {/* Contact Form Modal */}
       <Dialog open={isContactOpen} onOpenChange={setIsContactOpen}>
-        <DialogContent className="bg-white border-slate-200 text-slate-900 rounded-3xl">
+        <DialogContent className="bg-white border-2 border-slate-900 text-slate-900 rounded-3xl">
           <DialogHeader>
-            <DialogTitle className="text-purple-600 text-2xl font-bold">Formulario de Contacto</DialogTitle>
+            <DialogTitle className="text-[#E839A2] text-2xl font-black">Formulario de Contacto</DialogTitle>
           </DialogHeader>
           <form onSubmit={handleSubmit} className="space-y-4 pt-2">
             <div>
-              <Label className="text-slate-700">Nombre</Label>
+              <Label className="text-slate-800 font-bold">Nombre</Label>
               <Input 
                 value={formData.name}
                 onChange={(e) => setFormData({...formData, name: e.target.value})}
                 placeholder="Tu nombre"
-                className="bg-slate-50 border-slate-200 text-slate-900 focus:border-purple-500"
+                className="bg-[#F8A89A]/10 border-slate-300 text-slate-900 focus:border-[#0091C2]"
               />
             </div>
             <div>
-              <Label className="text-slate-700">Email</Label>
+              <Label className="text-slate-800 font-bold">Email</Label>
               <Input 
                 type="email"
                 value={formData.email}
                 onChange={(e) => setFormData({...formData, email: e.target.value})}
                 placeholder="tu@email.com"
-                className="bg-slate-50 border-slate-200 text-slate-900 focus:border-purple-500"
+                className="bg-[#F8A89A]/10 border-slate-300 text-slate-900 focus:border-[#0091C2]"
               />
             </div>
             <div>
-              <Label className="text-slate-700">Asunto</Label>
+              <Label className="text-slate-800 font-bold">Asunto</Label>
               <Input 
                 value={formData.subject}
                 onChange={(e) => setFormData({...formData, subject: e.target.value})}
                 placeholder="Asunto del mensaje"
-                className="bg-slate-50 border-slate-200 text-slate-900 focus:border-purple-500"
+                className="bg-[#F8A89A]/10 border-slate-300 text-slate-900 focus:border-[#0091C2]"
               />
             </div>
             <div>
-              <Label className="text-slate-700">Mensaje</Label>
+              <Label className="text-slate-800 font-bold">Mensaje</Label>
               <Textarea 
                 value={formData.message}
                 onChange={(e) => setFormData({...formData, message: e.target.value})}
                 placeholder="Tu mensaje..."
-                className="bg-slate-50 border-slate-200 text-slate-900 focus:border-purple-500 min-h-32"
+                className="bg-[#F8A89A]/10 border-slate-300 text-slate-900 focus:border-[#0091C2] min-h-32"
               />
             </div>
             <Button 
               type="submit" 
               disabled={isSubmitting}
-              className="w-full bg-emerald-400 hover:bg-purple-600 text-slate-900 hover:text-white font-bold py-3 transition-all rounded-xl"
+              className="w-full bg-[#FFDC2E] hover:bg-[#E839A2] text-slate-900 hover:text-white font-black py-3 transition-all rounded-xl border border-slate-900"
             >
               {isSubmitting ? 'Enviando...' : 'Enviar Mensaje'}
             </Button>
@@ -263,8 +263,8 @@ export default function Home() {
       </Dialog>
 
       {/* Footer */}
-      <footer className="bg-white border-t border-slate-200 py-8 px-4">
-        <div className="max-w-6xl mx-auto text-center text-slate-400 text-sm">
+      <footer className="bg-slate-900 text-white py-8 px-4">
+        <div className="max-w-6xl mx-auto text-center text-slate-300 text-sm font-medium">
           <p>&copy; 2026 AcademicaBS. Todos los derechos reservados.</p>
         </div>
       </footer>
