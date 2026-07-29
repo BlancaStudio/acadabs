@@ -60,36 +60,36 @@ export default function Home() {
   };
 
   return (
-    <div className="min-h-screen bg-[#F08080] text-slate-900">
+    <div className="min-h-screen bg-[#F8A89A] text-slate-900">
       {/* Navigation */}
-      <nav className="fixed top-0 w-full bg-[#F08080]/90 backdrop-blur-md z-50 border-b border-[#00BFFF]/30 shadow-sm">
+      <nav className="fixed top-0 w-full bg-[#F8A89A]/90 backdrop-blur-md z-50 border-b border-[#0091C2]/30 shadow-sm">
         <div className="max-w-6xl mx-auto px-4 py-4 flex items-center justify-between">
-          <div className="text-2xl font-black tracking-tight text-[#FF69B4] flex items-center gap-2 drop-shadow-sm">
-            AcademicaBS <Sparkles className="w-5 h-5 text-[#FFD700] fill-[#FFD700]" />
+          <div className="text-2xl font-black tracking-tight text-[#E839A2] flex items-center gap-2 drop-shadow-sm">
+            AcademicaBS <Sparkles className="w-5 h-5 text-[#FFDC2E] fill-[#FFDC2E]" />
           </div>
           
           {/* Desktop Navigation */}
           <div className="hidden md:flex gap-8">
-            <button onClick={() => scrollToSection('services')} className="text-slate-900 hover:text-[#FF69B4] font-extrabold transition">Servicios</button>
-            <button onClick={() => scrollToSection('contact')} className="text-slate-900 hover:text-[#FF69B4] font-extrabold transition">Contacto</button>
+            <button onClick={() => scrollToSection('services')} className="text-slate-900 hover:text-[#E839A2] font-extrabold transition">Servicios</button>
+            <button onClick={() => scrollToSection('contact')} className="text-slate-900 hover:text-[#E839A2] font-extrabold transition">Contacto</button>
           </div>
           
           {/* Mobile Menu Button */}
           <button 
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-            className="md:hidden text-slate-900 hover:text-[#FF69B4] transition"
+            className="md:hidden text-slate-900 hover:text-[#E839A2] transition"
           >
             {isMobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
           </button>
           
-          <Button onClick={() => setIsContactOpen(true)} className="hidden md:inline-flex bg-[#00BFFF] hover:bg-[#009ACD] text-white font-extrabold rounded-xl transition-all shadow-md">
+          <Button onClick={() => setIsContactOpen(true)} className="hidden md:inline-flex bg-[#0091C2] hover:bg-[#007A9E] text-white font-extrabold rounded-xl transition-all shadow-md">
             Contactar
           </Button>
         </div>
         
         {/* Mobile Navigation Menu */}
         {isMobileMenuOpen && (
-          <div className="md:hidden bg-[#F08080] border-t border-[#00BFFF]/20 px-4 py-4 space-y-3 shadow-lg">
+          <div className="md:hidden bg-[#F8A89A] border-t border-[#0091C2]/20 px-4 py-4 space-y-3 shadow-lg">
             <button 
               onClick={() => scrollToSection('services')}
               className="block w-full text-left text-slate-900 font-extrabold py-2"
@@ -107,7 +107,7 @@ export default function Home() {
                 setIsContactOpen(true);
                 setIsMobileMenuOpen(false);
               }}
-              className="w-full bg-[#00BFFF] hover:bg-[#009ACD] text-white font-extrabold transition-all"
+              className="w-full bg-[#0091C2] hover:bg-[#007A9E] text-white font-extrabold transition-all"
             >
               Contactar
             </Button>
@@ -118,16 +118,16 @@ export default function Home() {
       {/* Hero Section */}
       <section className="pt-36 pb-20 px-4 relative overflow-hidden">
         {/* Glow Accent inspired by the Yellow Sun */}
-        <div className="absolute top-10 left-1/2 -translate-x-1/2 w-80 h-80 bg-[#FFD700]/40 rounded-full blur-3xl -z-10 pointer-events-none"></div>
+        <div className="absolute top-10 left-1/2 -translate-x-1/2 w-80 h-80 bg-[#FFDC2E]/40 rounded-full blur-3xl -z-10 pointer-events-none"></div>
 
-        <div className="max-w-6xl mx-auto flex flex-col md:flex-row items-center justify-between gap-12">
+        <div className="max-w-6xl mx-auto flex flex-col md:flex-row items-center gap-12">
           <div className="flex-1 text-center md:text-left space-y-8">
-            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/80 border border-[#FFD700] shadow-sm text-slate-900 text-sm font-bold">
-              <Sparkles className="w-4 h-4 text-[#FF69B4]" /> Formación & Consultoría Académica
+            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/80 border border-[#FFDC2E] shadow-sm text-slate-900 text-sm font-bold">
+              <Sparkles className="w-4 h-4 text-[#E839A2]" /> Formación & Consultoría Académica
             </div>
             
             <h1 className="text-5xl md:text-7xl font-black text-slate-900 tracking-tight leading-tight">
-              Transformamos conocimiento en <span className="text-[#FF69B4] drop-shadow-sm">resultados brillantes</span>
+              Transformamos conocimiento en <span className="text-[#E839A2] drop-shadow-sm">resultados brillantes</span>
             </h1>
             
             <p className="text-xl md:text-2xl text-slate-900 font-medium max-w-2xl mx-auto md:mx-0 leading-relaxed bg-white/40 backdrop-blur-sm p-4 rounded-2xl border border-white/40">
@@ -137,42 +137,39 @@ export default function Home() {
             <div className="pt-4 flex justify-center md:justify-start">
               <Button 
                 onClick={() => setIsContactOpen(true)}
-                className="bg-[#FFD700] hover:bg-[#ECC600] text-slate-900 font-black py-7 px-10 text-xl rounded-2xl transition-all shadow-lg flex items-center gap-3 border-2 border-slate-900"
+                className="bg-[#FFDC2E] hover:bg-[#f3cf21] text-slate-900 font-black py-7 px-10 text-xl rounded-2xl transition-all shadow-lg flex items-center gap-3 border-2 border-slate-900"
               >
-                Solicitar Consulta <ArrowRight className="w-6 h-6 text-[#FF69B4]" />
+                Solicitar Consulta <ArrowRight className="w-6 h-6 text-[#E839A2]" />
               </Button>
             </div>
           </div>
 
-          {/* Mascot Integration */}
-          <div className="flex-1 flex justify-center items-center relative">
-            <div className="relative w-72 h-72 md:w-96 md:h-96">
-              {/* Sun/Halo Background for Mascot */}
-              <div className="absolute inset-0 bg-[#FFD700]/30 rounded-full animate-pulse blur-xl"></div>
+          {/* Mascot Image Integration */}
+          <div className="flex-1 flex justify-center items-center">
+            <div className="relative w-full max-w-md aspect-square flex items-center justify-center">
+              <div className="absolute inset-0 bg-white/20 rounded-full blur-3xl -z-10"></div>
               <img 
                 src="https://files.manuscdn.com/user_upload_by_module/session_file/310519663159966106/AMrkKqhRPUHSqHVt.png" 
-                alt="Mascota AcademicaBS" 
-                className="relative z-10 w-full h-full object-contain drop-shadow-2xl hover:scale-105 transition-transform duration-500"
+                alt="Gatito Surfero AcademicaBS" 
+                className="w-full h-auto object-contain drop-shadow-xl hover:rotate-3 transition-transform duration-500"
               />
-              {/* Decorative Waves below mascot to match the vibe */}
-              <div className="absolute -bottom-4 left-1/2 -translate-x-1/2 w-4/5 h-8 bg-[#00BFFF]/40 rounded-full blur-md z-0"></div>
             </div>
           </div>
         </div>
       </section>
 
       {/* Services Section */}
-      <section id="services" className="py-24 px-4 bg-white/90 border-y border-[#00BFFF]/20">
+      <section id="services" className="py-24 px-4 bg-white/90 border-y border-[#0091C2]/20">
         <div className="max-w-6xl mx-auto">
           <div className="text-center max-w-2xl mx-auto mb-16">
             <h2 className="text-4xl font-extrabold text-slate-900 tracking-tight">Servicios Principales</h2>
-            <div className="w-20 h-1.5 bg-[#FF69B4] rounded-full mx-auto mt-4"></div>
+            <div className="w-20 h-1.5 bg-[#E839A2] rounded-full mx-auto mt-4"></div>
           </div>
 
           <div className="grid md:grid-cols-3 gap-8">
             {SERVICES.map((service, idx) => (
-              <div key={idx} className="p-8 rounded-3xl bg-[#F08080]/20 border-2 border-[#00BFFF]/30 hover:border-[#FF69B4] transition-all duration-300 shadow-sm hover:shadow-md">
-                <span className="text-4xl font-black text-[#FF69B4] mb-6 block">{service.number}</span>
+              <div key={idx} className="p-8 rounded-3xl bg-[#F8A89A]/20 border-2 border-[#0091C2]/30 hover:border-[#E839A2] transition-all duration-300 shadow-sm hover:shadow-md">
+                <span className="text-4xl font-black text-[#E839A2] mb-6 block">{service.number}</span>
                 <h3 className="text-2xl font-bold text-slate-900 mb-3">{service.title}</h3>
                 <p className="text-slate-800 leading-relaxed font-medium">{service.description}</p>
               </div>
@@ -186,28 +183,28 @@ export default function Home() {
         <div className="max-w-5xl mx-auto">
           <div className="text-center max-w-2xl mx-auto mb-16">
             <h2 className="text-4xl font-extrabold text-slate-900 tracking-tight">Ponte en Contacto</h2>
-            <div className="w-20 h-1.5 bg-[#00BFFF] rounded-full mx-auto mt-4"></div>
+            <div className="w-20 h-1.5 bg-[#0091C2] rounded-full mx-auto mt-4"></div>
           </div>
 
           <div className="grid md:grid-cols-2 gap-8 items-center">
             <div className="space-y-6 bg-white p-8 rounded-3xl border-2 border-slate-900 shadow-md">
               <div className="flex items-center gap-4">
-                <div className="p-4 bg-[#FFD700] rounded-2xl text-slate-900 border border-slate-900">
+                <div className="p-4 bg-[#FFDC2E] rounded-2xl text-slate-900 border border-slate-900">
                   <Phone className="w-6 h-6" />
                 </div>
                 <div>
                   <h3 className="text-sm font-bold text-slate-500 uppercase tracking-wider">Teléfono</h3>
-                  <a href="tel:+34643831241" className="text-lg font-black text-slate-900 hover:text-[#FF69B4] transition">+34 643 831 241</a>
+                  <a href="tel:+34643831241" className="text-lg font-black text-slate-900 hover:text-[#E839A2] transition">+34 643 831 241</a>
                 </div>
               </div>
               
               <div className="flex items-center gap-4">
-                <div className="p-4 bg-[#00BFFF] rounded-2xl text-white border border-slate-900">
+                <div className="p-4 bg-[#0091C2] rounded-2xl text-white border border-slate-900">
                   <Mail className="w-6 h-6" />
                 </div>
                 <div>
                   <h3 className="text-sm font-bold text-slate-500 uppercase tracking-wider">Email</h3>
-                  <a href="mailto:blancasample@outlook.es" className="text-lg font-black text-slate-900 hover:text-[#FF69B4] transition">blancasample@outlook.es</a>
+                  <a href="mailto:blancasample@outlook.es" className="text-lg font-black text-slate-900 hover:text-[#E839A2] transition">blancasample@outlook.es</a>
                 </div>
               </div>
             </div>
@@ -215,7 +212,7 @@ export default function Home() {
             <div className="flex justify-center md:justify-end">
               <Button 
                 onClick={() => setIsContactOpen(true)}
-                className="w-full md:w-auto bg-[#FF69B4] hover:bg-[#FF1493] text-white font-extrabold py-8 px-12 text-xl rounded-2xl shadow-lg border-2 border-slate-900 transition-all duration-300"
+                className="w-full md:w-auto bg-[#E839A2] hover:bg-[#d02c8e] text-white font-extrabold py-8 px-12 text-xl rounded-2xl shadow-lg border-2 border-slate-900 transition-all duration-300"
               >
                 Enviar Mensaje
               </Button>
@@ -228,7 +225,7 @@ export default function Home() {
       <Dialog open={isContactOpen} onOpenChange={setIsContactOpen}>
         <DialogContent className="bg-white border-2 border-slate-900 text-slate-900 rounded-3xl">
           <DialogHeader>
-            <DialogTitle className="text-[#FF69B4] text-2xl font-black">Formulario de Contacto</DialogTitle>
+            <DialogTitle className="text-[#E839A2] text-2xl font-black">Formulario de Contacto</DialogTitle>
           </DialogHeader>
           <form onSubmit={handleSubmit} className="space-y-4 pt-2">
             <div>
@@ -237,7 +234,7 @@ export default function Home() {
                 value={formData.name}
                 onChange={(e) => setFormData({...formData, name: e.target.value})}
                 placeholder="Tu nombre"
-                className="bg-[#F08080]/10 border-slate-300 text-slate-900 focus:border-[#00BFFF]"
+                className="bg-[#F8A89A]/10 border-slate-300 text-slate-900 focus:border-[#0091C2]"
               />
             </div>
             <div>
@@ -247,7 +244,7 @@ export default function Home() {
                 value={formData.email}
                 onChange={(e) => setFormData({...formData, email: e.target.value})}
                 placeholder="tu@email.com"
-                className="bg-[#F08080]/10 border-slate-300 text-slate-900 focus:border-[#00BFFF]"
+                className="bg-[#F8A89A]/10 border-slate-300 text-slate-900 focus:border-[#0091C2]"
               />
             </div>
             <div>
@@ -256,7 +253,7 @@ export default function Home() {
                 value={formData.subject}
                 onChange={(e) => setFormData({...formData, subject: e.target.value})}
                 placeholder="Asunto del mensaje"
-                className="bg-[#F08080]/10 border-slate-300 text-slate-900 focus:border-[#00BFFF]"
+                className="bg-[#F8A89A]/10 border-slate-300 text-slate-900 focus:border-[#0091C2]"
               />
             </div>
             <div>
@@ -265,13 +262,13 @@ export default function Home() {
                 value={formData.message}
                 onChange={(e) => setFormData({...formData, message: e.target.value})}
                 placeholder="Tu mensaje..."
-                className="bg-[#F08080]/10 border-slate-300 text-slate-900 focus:border-[#00BFFF] min-h-32"
+                className="bg-[#F8A89A]/10 border-slate-300 text-slate-900 focus:border-[#0091C2] min-h-32"
               />
             </div>
             <Button 
               type="submit" 
               disabled={isSubmitting}
-              className="w-full bg-[#FFD700] hover:bg-[#FF69B4] text-slate-900 hover:text-white font-black py-3 transition-all rounded-xl border border-slate-900"
+              className="w-full bg-[#FFDC2E] hover:bg-[#E839A2] text-slate-900 hover:text-white font-black py-3 transition-all rounded-xl border border-slate-900"
             >
               {isSubmitting ? 'Enviando...' : 'Enviar Mensaje'}
             </Button>
