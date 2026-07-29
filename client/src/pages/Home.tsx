@@ -120,26 +120,43 @@ export default function Home() {
         {/* Glow Accent inspired by the Yellow Sun */}
         <div className="absolute top-10 left-1/2 -translate-x-1/2 w-80 h-80 bg-[#FFD700]/40 rounded-full blur-3xl -z-10 pointer-events-none"></div>
 
-        <div className="max-w-4xl mx-auto text-center space-y-8">
-          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/80 border border-[#FFD700] shadow-sm text-slate-900 text-sm font-bold">
-            <Sparkles className="w-4 h-4 text-[#FF69B4]" /> Formación & Consultoría Académica
-          </div>
-          
-          <h1 className="text-5xl md:text-7xl font-black text-slate-900 tracking-tight leading-tight">
-            Transformamos conocimiento en <span className="text-[#FF69B4] drop-shadow-sm">resultados brillantes</span>
-          </h1>
-          
-          <p className="text-xl md:text-2xl text-slate-900 font-medium max-w-2xl mx-auto leading-relaxed bg-white/40 backdrop-blur-sm p-4 rounded-2xl border border-white/40">
-            Especialistas en investigación, gestión de proyectos académicos y comunicación científica. Un enfoque limpio, directo y libre de artificios.
-          </p>
+        <div className="max-w-6xl mx-auto flex flex-col md:flex-row items-center justify-between gap-12">
+          <div className="flex-1 text-center md:text-left space-y-8">
+            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/80 border border-[#FFD700] shadow-sm text-slate-900 text-sm font-bold">
+              <Sparkles className="w-4 h-4 text-[#FF69B4]" /> Formación & Consultoría Académica
+            </div>
+            
+            <h1 className="text-5xl md:text-7xl font-black text-slate-900 tracking-tight leading-tight">
+              Transformamos conocimiento en <span className="text-[#FF69B4] drop-shadow-sm">resultados brillantes</span>
+            </h1>
+            
+            <p className="text-xl md:text-2xl text-slate-900 font-medium max-w-2xl mx-auto md:mx-0 leading-relaxed bg-white/40 backdrop-blur-sm p-4 rounded-2xl border border-white/40">
+              Especialistas en investigación, gestión de proyectos académicos y comunicación científica. Un enfoque limpio, directo y libre de artificios.
+            </p>
 
-          <div className="pt-4 flex justify-center">
-            <Button 
-              onClick={() => setIsContactOpen(true)}
-              className="bg-[#FFD700] hover:bg-[#ECC600] text-slate-900 font-black py-7 px-10 text-xl rounded-2xl transition-all shadow-lg flex items-center gap-3 border-2 border-slate-900"
-            >
-              Solicitar Consulta <ArrowRight className="w-6 h-6 text-[#FF69B4]" />
-            </Button>
+            <div className="pt-4 flex justify-center md:justify-start">
+              <Button 
+                onClick={() => setIsContactOpen(true)}
+                className="bg-[#FFD700] hover:bg-[#ECC600] text-slate-900 font-black py-7 px-10 text-xl rounded-2xl transition-all shadow-lg flex items-center gap-3 border-2 border-slate-900"
+              >
+                Solicitar Consulta <ArrowRight className="w-6 h-6 text-[#FF69B4]" />
+              </Button>
+            </div>
+          </div>
+
+          {/* Mascot Integration */}
+          <div className="flex-1 flex justify-center items-center relative">
+            <div className="relative w-72 h-72 md:w-96 md:h-96">
+              {/* Sun/Halo Background for Mascot */}
+              <div className="absolute inset-0 bg-[#FFD700]/30 rounded-full animate-pulse blur-xl"></div>
+              <img 
+                src="https://files.manuscdn.com/user_upload_by_module/session_file/310519663159966106/AMrkKqhRPUHSqHVt.png" 
+                alt="Mascota AcademicaBS" 
+                className="relative z-10 w-full h-full object-contain drop-shadow-2xl hover:scale-105 transition-transform duration-500"
+              />
+              {/* Decorative Waves below mascot to match the vibe */}
+              <div className="absolute -bottom-4 left-1/2 -translate-x-1/2 w-4/5 h-8 bg-[#00BFFF]/40 rounded-full blur-md z-0"></div>
+            </div>
           </div>
         </div>
       </section>
