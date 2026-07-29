@@ -4,7 +4,7 @@ import { Dialog, DialogContent, DialogHeader, DialogTitle } from '@/components/u
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
 import { Label } from '@/components/ui/label';
-import { Mail, Phone, ArrowRight, Menu, X, Sparkles } from 'lucide-react';
+import { Mail, Phone, ArrowRight, Menu, X, Sparkles, Star, Quote } from 'lucide-react';
 import { trpc } from '@/lib/trpc';
 import { toast } from 'sonner';
 
@@ -24,6 +24,19 @@ const SERVICES = [
     title: 'Comunicación y Marketing Científico',
     description: 'Estrategia y creación de contenidos rigurosos para la difusión del conocimiento.'
   }
+];
+
+const TESTIMONIALS = [
+  { name: "Laura G.", degree: "Ciencias de la Salud", text: "La consultoría de AcademicaBS fue clave para estructurar mi TFG. Su guía experta me permitió enfocar mi investigación y presentar un trabajo sólido." },
+  { name: "Carlos M.", degree: "Ingeniería", text: "Gracias a la formación especializada, pude desarrollar las habilidades necesarias. El acompañamiento fue constante en cada etapa." },
+  { name: "Sofía P.", degree: "Humanidades", text: "No sabía por dónde empezar, pero me proporcionaron las herramientas y el apoyo que necesitaba. El proceso fue muy manejable." },
+  { name: "Javier R.", degree: "Derecho", text: "La gestión académica es excepcional. Me ayudaron a organizar mi tiempo y a cumplir con los plazos de entrega." },
+  { name: "Ana S.", degree: "Economía", text: "Mi TFG requería una investigación profunda y la asesoría fue invaluable. Contenido riguroso y original." },
+  { name: "Pablo V.", degree: "Comunicación", text: "Aprendí a comunicar mis ideas de manera efectiva y a defender mi trabajo con total seguridad." },
+  { name: "Elena D.", degree: "Biología", text: "Mi trabajo no solo fue académicamente correcto, sino también claro y muy atractivo visualmente." },
+  { name: "Miguel A.", degree: "Psicología", text: "Desde la elección del tema hasta la presentación final, siempre conté con su gran apoyo y experiencia." },
+  { name: "Isabel F.", degree: "Educación", text: "Transformaron mi idea inicial en un TFG brillante. Su metodología de trabajo es sumamente eficiente." },
+  { name: "Diego L.", degree: "Arquitectura", text: "La rigurosidad y el profesionalismo fueron fundamentales para el éxito. Muy orgulloso del trabajo logrado." }
 ];
 
 export default function Home() {
@@ -60,228 +73,183 @@ export default function Home() {
   };
 
   return (
-    <div className="min-h-screen bg-[#F8A89A] text-slate-900">
+    <div className="min-h-screen bg-[#F8A89A] text-slate-900 font-sans">
       {/* Navigation */}
-      <nav className="fixed top-0 w-full bg-[#F8A89A]/90 backdrop-blur-md z-50 border-b border-[#0091C2]/30 shadow-sm">
-        <div className="max-w-6xl mx-auto px-4 py-4 flex items-center justify-between">
+      <nav className="fixed top-0 w-full bg-[#F8A89A]/95 backdrop-blur-md z-50 border-b border-[#0091C2]/30 shadow-sm">
+        <div className="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
           <div className="text-2xl font-black tracking-tight text-[#E839A2] flex items-center gap-2 drop-shadow-sm">
             AcademicaBS <Sparkles className="w-5 h-5 text-[#FFDC2E] fill-[#FFDC2E]" />
           </div>
           
-          {/* Desktop Navigation */}
-          <div className="hidden md:flex gap-8">
-            <button onClick={() => scrollToSection('services')} className="text-slate-900 hover:text-[#E839A2] font-extrabold transition">Servicios</button>
-            <button onClick={() => scrollToSection('contact')} className="text-slate-900 hover:text-[#E839A2] font-extrabold transition">Contacto</button>
+          <div className="hidden md:flex gap-10 items-center">
+            <button onClick={() => scrollToSection('services')} className="text-slate-900 hover:text-[#E839A2] font-bold transition-colors">Servicios</button>
+            <button onClick={() => scrollToSection('testimonials')} className="text-slate-900 hover:text-[#E839A2] font-bold transition-colors">Testimonios</button>
+            <button onClick={() => scrollToSection('contact')} className="text-slate-900 hover:text-[#E839A2] font-bold transition-colors">Contacto</button>
+            <Button onClick={() => setIsContactOpen(true)} className="bg-[#0091C2] hover:bg-[#007A9E] text-white font-black rounded-2xl px-8 shadow-lg transform hover:scale-105 transition-all">
+              ¡Empezar Ya!
+            </Button>
           </div>
           
-          {/* Mobile Menu Button */}
-          <button 
-            onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-            className="md:hidden text-slate-900 hover:text-[#E839A2] transition"
-          >
-            {isMobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+          <button onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)} className="md:hidden text-slate-900">
+            {isMobileMenuOpen ? <X className="w-8 h-8" /> : <Menu className="w-8 h-8" />}
           </button>
-          
-          <Button onClick={() => setIsContactOpen(true)} className="hidden md:inline-flex bg-[#0091C2] hover:bg-[#007A9E] text-white font-extrabold rounded-xl transition-all shadow-md">
-            Contactar
-          </Button>
         </div>
         
-        {/* Mobile Navigation Menu */}
         {isMobileMenuOpen && (
-          <div className="md:hidden bg-[#F8A89A] border-t border-[#0091C2]/20 px-4 py-4 space-y-3 shadow-lg">
-            <button 
-              onClick={() => scrollToSection('services')}
-              className="block w-full text-left text-slate-900 font-extrabold py-2"
-            >
-              Servicios
-            </button>
-            <button 
-              onClick={() => scrollToSection('contact')}
-              className="block w-full text-left text-slate-900 font-extrabold py-2"
-            >
-              Contacto
-            </button>
-            <Button 
-              onClick={() => {
-                setIsContactOpen(true);
-                setIsMobileMenuOpen(false);
-              }}
-              className="w-full bg-[#0091C2] hover:bg-[#007A9E] text-white font-extrabold transition-all"
-            >
-              Contactar
+          <div className="md:hidden bg-[#F8A89A] border-t border-[#0091C2]/20 px-6 py-6 space-y-4 shadow-2xl animate-in slide-in-from-top">
+            <button onClick={() => scrollToSection('services')} className="block w-full text-left text-xl font-black py-2">Servicios</button>
+            <button onClick={() => scrollToSection('testimonials')} className="block w-full text-left text-xl font-black py-2">Testimonios</button>
+            <button onClick={() => scrollToSection('contact')} className="block w-full text-left text-xl font-black py-2">Contacto</button>
+            <Button onClick={() => { setIsContactOpen(true); setIsMobileMenuOpen(false); }} className="w-full bg-[#0091C2] py-6 text-xl font-black rounded-2xl shadow-xl">
+              ¡Empezar Ya!
             </Button>
           </div>
         )}
       </nav>
 
       {/* Hero Section */}
-      <section className="pt-36 pb-20 px-4 relative overflow-hidden">
-        {/* Glow Accent inspired by the Yellow Sun */}
-        <div className="absolute top-10 left-1/2 -translate-x-1/2 w-80 h-80 bg-[#FFDC2E]/40 rounded-full blur-3xl -z-10 pointer-events-none"></div>
-
-        <div className="max-w-6xl mx-auto flex flex-col md:flex-row items-center gap-12">
-          <div className="flex-1 text-center md:text-left space-y-8">
-            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/80 border border-[#FFDC2E] shadow-sm text-slate-900 text-sm font-bold">
-              <Sparkles className="w-4 h-4 text-[#E839A2]" /> Formación & Consultoría Académica
+      <section className="pt-44 pb-24 px-6 relative">
+        <div className="max-w-7xl mx-auto flex flex-col lg:flex-row items-center gap-16">
+          <div className="flex-1 text-center lg:text-left space-y-10">
+            <div className="inline-flex items-center gap-3 px-6 py-3 rounded-full bg-white/90 border-2 border-[#FFDC2E] shadow-xl text-slate-900 text-base font-black uppercase tracking-wider">
+              <Sparkles className="w-5 h-5 text-[#E839A2]" /> +30 TFGs Exitosos
             </div>
             
-            <h1 className="text-5xl md:text-7xl font-black text-slate-900 tracking-tight leading-tight">
-              Transformamos conocimiento en <span className="text-[#E839A2] drop-shadow-sm">resultados brillantes</span>
+            <h1 className="text-6xl md:text-8xl font-black text-slate-900 tracking-tighter leading-[0.9]">
+              Surfea tu <span className="text-[#E839A2] drop-shadow-[4px_4px_0px_#FFDC2E]">TFG</span> con Éxito
             </h1>
             
-            <p className="text-xl md:text-2xl text-slate-900 font-medium max-w-2xl mx-auto md:mx-0 leading-relaxed bg-white/40 backdrop-blur-sm p-4 rounded-2xl border border-white/40">
-              Especialistas en investigación, gestión de proyectos académicos y comunicación científica. Un enfoque limpio, directo y libre de artificios.
+            <p className="text-2xl md:text-3xl text-slate-900 font-bold max-w-2xl leading-snug">
+              Investigación, gestión y comunicación científica sin dramas. El laboratorio de proyectos que necesitabas.
             </p>
 
-            <div className="pt-4 flex justify-center md:justify-start">
+            <div className="flex flex-col sm:flex-row justify-center lg:justify-start gap-6">
               <Button 
                 onClick={() => setIsContactOpen(true)}
-                className="bg-[#FFDC2E] hover:bg-[#f3cf21] text-slate-900 font-black py-7 px-10 text-xl rounded-2xl transition-all shadow-lg flex items-center gap-3 border-2 border-slate-900"
+                className="bg-[#FFDC2E] hover:bg-[#f3cf21] text-slate-900 font-black py-8 px-12 text-2xl rounded-3xl transition-all shadow-[8px_8px_0px_#0091C2] border-4 border-slate-900 active:translate-x-1 active:translate-y-1 active:shadow-none"
               >
-                Solicitar Consulta <ArrowRight className="w-6 h-6 text-[#E839A2]" />
+                Solicitar Ayuda <ArrowRight className="w-8 h-8 ml-2" />
               </Button>
             </div>
           </div>
 
-          {/* Mascot Image Integration */}
-          <div className="flex-1 flex justify-center items-center">
-            <div className="relative w-full max-w-md aspect-square flex items-center justify-center">
-              <div className="absolute inset-0 bg-white/20 rounded-full blur-3xl -z-10"></div>
-              <img 
-                src="https://files.manuscdn.com/user_upload_by_module/session_file/310519663159966106/AMrkKqhRPUHSqHVt.png" 
-                alt="Gatito Surfero AcademicaBS" 
-                className="w-full h-auto object-contain drop-shadow-xl hover:rotate-3 transition-transform duration-500"
-              />
-            </div>
+          <div className="flex-1 relative group">
+            <div className="absolute inset-0 bg-[#FFDC2E] rounded-full blur-[100px] opacity-30 group-hover:opacity-50 transition-opacity"></div>
+            <img 
+              src="https://files.manuscdn.com/user_upload_by_module/session_file/310519663159966106/tyVZksFBLvvWaJGW.png" 
+              alt="Mascota AcademicaBS Loco" 
+              className="relative z-10 w-full h-auto object-contain drop-shadow-[0_35px_35px_rgba(0,0,0,0.3)] transform group-hover:scale-105 group-hover:rotate-2 transition-all duration-700"
+            />
           </div>
         </div>
       </section>
 
-      {/* Services Section */}
-      <section id="services" className="py-24 px-4 bg-white/90 border-y border-[#0091C2]/20">
-        <div className="max-w-6xl mx-auto">
-          <div className="text-center max-w-2xl mx-auto mb-16">
-            <h2 className="text-4xl font-extrabold text-slate-900 tracking-tight">Servicios Principales</h2>
-            <div className="w-20 h-1.5 bg-[#E839A2] rounded-full mx-auto mt-4"></div>
+      {/* Testimonials Section */}
+      <section id="testimonials" className="py-32 px-6 bg-slate-900 text-white overflow-hidden relative">
+        <div className="max-w-7xl mx-auto relative z-10">
+          <div className="text-center mb-20">
+            <h2 className="text-5xl md:text-7xl font-black tracking-tighter mb-6">Lo que dicen <span className="text-[#FFDC2E]">nuestros alumnos</span></h2>
+            <p className="text-xl text-slate-400 font-bold">Hemos impulsado más de 30 proyectos brillantes</p>
           </div>
 
-          <div className="grid md:grid-cols-3 gap-8">
-            {SERVICES.map((service, idx) => (
-              <div key={idx} className="p-8 rounded-3xl bg-[#F8A89A]/20 border-2 border-[#0091C2]/30 hover:border-[#E839A2] transition-all duration-300 shadow-sm hover:shadow-md">
-                <span className="text-4xl font-black text-[#E839A2] mb-6 block">{service.number}</span>
-                <h3 className="text-2xl font-bold text-slate-900 mb-3">{service.title}</h3>
-                <p className="text-slate-800 leading-relaxed font-medium">{service.description}</p>
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {TESTIMONIALS.map((t, i) => (
+              <div key={i} className="bg-white/5 backdrop-blur-lg p-10 rounded-[40px] border-2 border-white/10 hover:border-[#E839A2] transition-all group">
+                <Quote className="w-12 h-12 text-[#FFDC2E] mb-6 opacity-50 group-hover:opacity-100 transition-opacity" />
+                <p className="text-xl font-medium leading-relaxed mb-8 italic">"{t.text}"</p>
+                <div className="flex items-center gap-4 border-t border-white/10 pt-6">
+                  <div className="w-12 h-12 bg-[#E839A2] rounded-full flex items-center justify-center font-black text-xl">
+                    {t.name[0]}
+                  </div>
+                  <div>
+                    <h4 className="font-black text-lg">{t.name}</h4>
+                    <p className="text-[#00BFFF] font-bold text-sm uppercase tracking-widest">{t.degree}</p>
+                  </div>
+                </div>
               </div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* Contact Section */}
-      <section id="contact" className="py-24 px-4">
-        <div className="max-w-5xl mx-auto">
-          <div className="text-center max-w-2xl mx-auto mb-16">
-            <h2 className="text-4xl font-extrabold text-slate-900 tracking-tight">Ponte en Contacto</h2>
-            <div className="w-20 h-1.5 bg-[#0091C2] rounded-full mx-auto mt-4"></div>
+      {/* Services Section */}
+      <section id="services" className="py-32 px-6 bg-white">
+        <div className="max-w-7xl mx-auto">
+          <div className="flex flex-col md:flex-row justify-between items-end mb-20 gap-8">
+            <div className="max-w-2xl">
+              <h2 className="text-5xl md:text-7xl font-black tracking-tighter text-slate-900 mb-6">Servicios <span className="text-[#0091C2]">Pro</span></h2>
+              <p className="text-2xl text-slate-600 font-bold leading-tight">Soluciones integrales para que tu investigación destaque sobre el resto.</p>
+            </div>
+            <div className="h-1 w-32 bg-[#E839A2] rounded-full hidden md:block mb-6"></div>
           </div>
 
-          <div className="grid md:grid-cols-2 gap-8 items-center">
-            <div className="space-y-6 bg-white p-8 rounded-3xl border-2 border-slate-900 shadow-md">
-              <div className="flex items-center gap-4">
-                <div className="p-4 bg-[#FFDC2E] rounded-2xl text-slate-900 border border-slate-900">
-                  <Phone className="w-6 h-6" />
-                </div>
-                <div>
-                  <h3 className="text-sm font-bold text-slate-500 uppercase tracking-wider">Teléfono</h3>
-                  <a href="tel:+34643831241" className="text-lg font-black text-slate-900 hover:text-[#E839A2] transition">+34 643 831 241</a>
-                </div>
-              </div>
-              
-              <div className="flex items-center gap-4">
-                <div className="p-4 bg-[#0091C2] rounded-2xl text-white border border-slate-900">
-                  <Mail className="w-6 h-6" />
-                </div>
-                <div>
-                  <h3 className="text-sm font-bold text-slate-500 uppercase tracking-wider">Email</h3>
-                  <a href="mailto:blancasample@outlook.es" className="text-lg font-black text-slate-900 hover:text-[#E839A2] transition">blancasample@outlook.es</a>
+          <div className="grid md:grid-cols-3 gap-12">
+            {SERVICES.map((s, i) => (
+              <div key={i} className="group relative">
+                <div className="absolute -inset-4 bg-[#F8A89A] rounded-[40px] opacity-0 group-hover:opacity-100 transition-all -z-10"></div>
+                <div className="p-10 bg-slate-50 rounded-[40px] border-4 border-slate-900 h-full shadow-[12px_12px_0px_#000] group-hover:translate-x-1 group-hover:translate-y-1 group-hover:shadow-none transition-all">
+                  <span className="text-6xl font-black text-[#E839A2] mb-8 block">{s.number}</span>
+                  <h3 className="text-3xl font-black text-slate-900 mb-6 leading-tight">{s.title}</h3>
+                  <p className="text-lg text-slate-700 font-bold leading-relaxed">{s.description}</p>
                 </div>
               </div>
-            </div>
-
-            <div className="flex justify-center md:justify-end">
-              <Button 
-                onClick={() => setIsContactOpen(true)}
-                className="w-full md:w-auto bg-[#E839A2] hover:bg-[#d02c8e] text-white font-extrabold py-8 px-12 text-xl rounded-2xl shadow-lg border-2 border-slate-900 transition-all duration-300"
-              >
-                Enviar Mensaje
-              </Button>
-            </div>
+            ))}
           </div>
+        </div>
+      </section>
+
+      {/* Footer / Contact CTA */}
+      <section id="contact" className="py-32 px-6 bg-[#FFDC2E] border-t-8 border-slate-900">
+        <div className="max-w-5xl mx-auto text-center space-y-12">
+          <h2 className="text-6xl md:text-8xl font-black text-slate-900 tracking-tighter">¿Listo para el <span className="underline decoration-[#E839A2]">éxito</span>?</h2>
+          <div className="flex flex-wrap justify-center gap-8">
+            <a href="tel:+34643831241" className="flex items-center gap-4 text-3xl font-black hover:text-[#E839A2] transition-colors">
+              <Phone className="w-10 h-10" /> +34 643 831 241
+            </a>
+            <a href="mailto:blancasample@outlook.es" className="flex items-center gap-4 text-3xl font-black hover:text-[#E839A2] transition-colors">
+              <Mail className="w-10 h-10" /> blancasample@outlook.es
+            </a>
+          </div>
+          <Button 
+            onClick={() => setIsContactOpen(true)}
+            className="bg-slate-900 text-white font-black py-10 px-16 text-3xl rounded-[40px] hover:bg-[#E839A2] transition-all shadow-2xl"
+          >
+            Enviar Mensaje
+          </Button>
         </div>
       </section>
 
       {/* Contact Form Modal */}
       <Dialog open={isContactOpen} onOpenChange={setIsContactOpen}>
-        <DialogContent className="bg-white border-2 border-slate-900 text-slate-900 rounded-3xl">
+        <DialogContent className="bg-white border-8 border-slate-900 text-slate-900 rounded-[50px] max-w-2xl p-12">
           <DialogHeader>
-            <DialogTitle className="text-[#E839A2] text-2xl font-black">Formulario de Contacto</DialogTitle>
+            <DialogTitle className="text-5xl font-black tracking-tighter text-[#E839A2] mb-6">¡Vamos a ello!</DialogTitle>
           </DialogHeader>
-          <form onSubmit={handleSubmit} className="space-y-4 pt-2">
-            <div>
-              <Label className="text-slate-800 font-bold">Nombre</Label>
-              <Input 
-                value={formData.name}
-                onChange={(e) => setFormData({...formData, name: e.target.value})}
-                placeholder="Tu nombre"
-                className="bg-[#F8A89A]/10 border-slate-300 text-slate-900 focus:border-[#0091C2]"
-              />
+          <form onSubmit={handleSubmit} className="space-y-6">
+            <div className="grid md:grid-cols-2 gap-6">
+              <div className="space-y-2">
+                <Label className="text-xl font-black">Nombre</Label>
+                <Input value={formData.name} onChange={(e) => setFormData({...formData, name: e.target.value})} className="h-16 rounded-2xl border-4 border-slate-900 text-xl font-bold" />
+              </div>
+              <div className="space-y-2">
+                <Label className="text-xl font-black">Email</Label>
+                <Input type="email" value={formData.email} onChange={(e) => setFormData({...formData, email: e.target.value})} className="h-16 rounded-2xl border-4 border-slate-900 text-xl font-bold" />
+              </div>
             </div>
-            <div>
-              <Label className="text-slate-800 font-bold">Email</Label>
-              <Input 
-                type="email"
-                value={formData.email}
-                onChange={(e) => setFormData({...formData, email: e.target.value})}
-                placeholder="tu@email.com"
-                className="bg-[#F8A89A]/10 border-slate-300 text-slate-900 focus:border-[#0091C2]"
-              />
+            <div className="space-y-2">
+              <Label className="text-xl font-black">Asunto</Label>
+              <Input value={formData.subject} onChange={(e) => setFormData({...formData, subject: e.target.value})} className="h-16 rounded-2xl border-4 border-slate-900 text-xl font-bold" />
             </div>
-            <div>
-              <Label className="text-slate-800 font-bold">Asunto</Label>
-              <Input 
-                value={formData.subject}
-                onChange={(e) => setFormData({...formData, subject: e.target.value})}
-                placeholder="Asunto del mensaje"
-                className="bg-[#F8A89A]/10 border-slate-300 text-slate-900 focus:border-[#0091C2]"
-              />
+            <div className="space-y-2">
+              <Label className="text-xl font-black">Mensaje</Label>
+              <Textarea value={formData.message} onChange={(e) => setFormData({...formData, message: e.target.value})} className="min-h-[150px] rounded-2xl border-4 border-slate-900 text-xl font-bold" />
             </div>
-            <div>
-              <Label className="text-slate-800 font-bold">Mensaje</Label>
-              <Textarea 
-                value={formData.message}
-                onChange={(e) => setFormData({...formData, message: e.target.value})}
-                placeholder="Tu mensaje..."
-                className="bg-[#F8A89A]/10 border-slate-300 text-slate-900 focus:border-[#0091C2] min-h-32"
-              />
-            </div>
-            <Button 
-              type="submit" 
-              disabled={isSubmitting}
-              className="w-full bg-[#FFDC2E] hover:bg-[#E839A2] text-slate-900 hover:text-white font-black py-3 transition-all rounded-xl border border-slate-900"
-            >
+            <Button type="submit" disabled={isSubmitting} className="w-full bg-[#E839A2] py-10 text-3xl font-black rounded-3xl border-4 border-slate-900 shadow-[8px_8px_0px_#000] hover:shadow-none transition-all">
               {isSubmitting ? 'Enviando...' : 'Enviar Mensaje'}
             </Button>
           </form>
         </DialogContent>
       </Dialog>
-
-      {/* Footer */}
-      <footer className="bg-slate-900 text-white py-8 px-4">
-        <div className="max-w-6xl mx-auto text-center text-slate-300 text-sm font-medium">
-          <p>&copy; 2026 AcademicaBS. Todos los derechos reservados.</p>
-        </div>
-      </footer>
     </div>
   );
 }
